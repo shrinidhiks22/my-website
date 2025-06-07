@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNR Checker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #007BFF; /* Solid blue background */
+        }
+
+        .content {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #fff; /* White text for contrast */
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        h3 {
+            margin: 10px 0;
+            color: #fff; /* White text */
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buttons a {
+            text-decoration: none;
+        }
+
+        .buttons button {
+            margin: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #2196F3;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #0b7dda;
+        }
+
+        .home-logo {
+            display: flex;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+
+            button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            input[type="text"] {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home logo link with image -->
+    <div class="home-logo">
+        <a href="C:/Users/Shrinidhi/Desktop/project/checkfinal.html">
+            <img src="C:\Users\Shrinidhi\Downloads\home logo.jpeg" width="50px" alt="Home Logo">
+        </a>
+    </div>
+
+    <div class="content">
+        <h1>Enter PNR Number</h1>
+        <input type="text" id="pnr" placeholder="Enter PNR Number">
+        <button onclick="checkPNR()">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Dummy data for PNRs (equivalent to train_data in Flask app)
+        const trainData = [
+            {"name": "Ram", "pnr": 1234567890, "train_name": "Chozhan Express", "train_number": 12211},
+            {"name": "Raj", "pnr": 1478523690, "train_name": "Shatabdi Express", "train_number": 22933},
+            {"name": "Arun", "pnr": 9876543210, "train_name": "Pandian Express", "train_number": 13001},
+        ];
+
+        function checkPNR() {
+            const pnrInput = document.getElementById('pnr').value;
+            const resultDiv = document.getElementById('result');
+            const pnr = parseInt(pnrInput, 10);  // Convert input to integer
+
+            const train = trainData.find(train => train.pnr === pnr); // Check for valid PNR
+
+            if (train) {
+                // If PNR is valid, show train details with buttons
+                resultDiv.innerHTML = `
+                    <center><h2 style="color: white;">TRAIN DETAILS</h2></center>
+                    <h3>Train Name: ${train.train_name}</h3>
+                    <h3>PNR Number: ${train.pnr}</h3>
+                    <h3>Train Number: ${train.train_number}</h3>
+                    <div class="buttons">
+                        <a href="helpnew2.html" target="_blank">
+                            <button>HELP</button>
+                        </a>
+                        <a href="C:/Users/Shrinidhi/Desktop/project/call.html" target="_blank">
+                            <button>EMERGENCY CALL</button>
+                        </a>
+                    </div>
+                `;
+            } else {
+                // If PNR is invalid, show error message
+                resultDiv.innerHTML = '<h1 style="color:red;">SORRY INVALID PNR NUMBER</h1>';
+            }
+        }
+    </script>
+</body>
+</html>
