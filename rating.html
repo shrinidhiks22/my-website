@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #007BFF;
+            font-family: Arial, sans-serif;
+        }
+        
+        .star-rating {
+            direction: rtl; /* Make stars fill from right to left */
+            display: inline-flex;
+            padding: 10px;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 30px; /* Star size */
+            color: white; /* Unselected star color */
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: gold; /* Selected star color */
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center>
+        <h1>The problem will be rectified soon.</h1>
+        <h4>   Rate our Service...</h4>
+
+        <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5" title="5 stars">★</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4" title="4 stars">★</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3" title="3 stars">★</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2" title="2 stars">★</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1" title="1 star">★</label><br>
+            
+        </div>
+       </center>
+        <center><button class="submit-btn" onclick="submit"><a href="checkfinal.html" target = "_blank">SUBMIT</button></a>
+        </center>
+    </div>
+</body>
+</html>

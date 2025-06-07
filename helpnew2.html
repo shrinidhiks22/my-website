@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Only Accordion Design with User Input</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: #007BFF;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: url('C:\Users\Shrinidhi\Downloads\backbutton.jpg') no-repeat center;
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        .container {
+            margin: 0 40px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container h1 {
+            color: #fff;
+            text-align: center;
+        }
+
+        .container .tab {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+        }
+
+        .container .tab input {
+            appearance: none;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .container .tab label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .container .tab label::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 2em;
+            color: rgba(0, 0, 0, 0.1);
+            transition: transform 1s;
+        }
+
+        .container .tab:hover label::after {
+            color: #333;
+        }
+
+        .container .tab input:checked ~ label::after {
+            transform: rotate(135deg);
+        }
+
+        .container .tab label h2 {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.25em;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .container .tab label h3 {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .container .tab .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease;
+        }
+
+        .container .tab input:checked ~ .content {
+            max-height: 100vh;
+        }
+
+        .container .tab .content p {
+            padding: 10px 0;
+            color: #333;
+        }
+
+        .container .tab input:checked ~ .content p {
+            color: #fff;
+            background-color: #4f31c5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .faq-form {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .faq-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .faq-form button {
+            padding: 10px;
+            background:#4ec8f1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .faq-form button:hover {
+            background: #3c26a1;
+        }
+
+        .submit-btn {
+            background: #4ec8f1;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #ecf1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-button" onclick="goBackAndExecuteFunction()">
+        <img src="C:/Users/Shrinidhi/Downloads/backbutton.jpg" width="50px" alt="Back">
+    </div>
+    
+    <script>
+        function goBackAndExecuteFunction() {
+            // Check if the parent window is available
+            if (window.opener) {
+                // Call the function in the parent window
+                window.opener.checkPNR();
+            }
+            // Close the FAQ page and return to the parent
+            window.close();
+        }
+    </script>
+    
+
+
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        
+        <!-- Predefined FAQs with individual submit buttons -->
+        <div class="tab">
+            <input type="radio" name="acc" id="acc1">
+            <label for="acc1">
+                <h2>01</h2>
+                <h3>The toilet has a bad odor of alcohol.</h3>
+            </label>
+            <div class="content">
+                <p>We apologize for the inconvenience. We will address the issue and purify the air inside the toilet as soon as possible.</p>
+                <button class="submit-btn" onclick="submitIssue('The toilet has a bad odor of alcohol')"><a href="rating.html" target = "_blank"> Submit Issue</button></a>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" name="acc" id="acc2">
+            <label for="acc2">
+                <h2>02</h2>
+                <h3>The toilet is running out of toilet paper.</h3>
+            </label>
+            <div class="content">
+                <p>Thank you for informing us. We will restock the toilet paper immediately to ensure availability for all passengers.</p>
+                <button class="submit-btn" onclick="submitIssue('The toilet is running out of toilet paper')"><a href="rating.html" target = "_blank">Submit Issue</button></a>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" name="acc" id="acc3">
+            <label for="acc3">
+                <h2>03</h2>
+                <h3>The toilet is dirty and needs cleaning.</h3>
+            </label>
+            <div class="content">
+                <p>We’re sorry to hear that. Our Automation System will be notified right away to clean the toilet within 20-30 minutes.</p>
+                <button class="submit-btn" onclick="submitIssue('The toilet is dirty and needs cleaning')"><a href="rating.html" target = "_blank" >Submit Issue</button></a>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" name="acc" id="acc4">
+            <label for="acc4">
+                <h2>04</h2>
+                <h3>There’s no water in the toilet sink.</h3>
+            </label>
+            <div class="content">
+                <p>We’re sorry for the inconvenience. Our team will check and restore water supply as quickly as possible.</p>
+                <button class="submit-btn" onclick="submitIssue('There’s no water in the toilet sink')"><a href="rating.html" target = "_blank" >Submit Issue </button></a>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" name="acc" id="acc5">
+            <label for="acc5">
+                <h2>05</h2>
+                <h3>I feel unsafe using the toilet due to poor lighting.</h3>
+            </label>
+            <div class="content">
+                <p>We understand your concern and apologize for the inadequate lighting. Our team will work to improve the lighting in the area.</p>
+                <button class="submit-btn" onclick="submitIssue('I feel unsafe using the toilet due to poor lighting')"><a href="rating.html" target = "_blank"> Submit Issue</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form to submit new problems -->
+    <div class="faq-form">
+        <h3>Submit Your Own Problem</h3>
+        <input type="text" id="user-question" placeholder="Your problem">
+        <button onclick="addFaq()"><a href="rating.html" target = "_blank" >Submit Problem </button></a>
+    </div>
+
+    <div class="container" id="user-faqs">
+        <h1>User Submitted Problems</h1>
+    </div>
+
+    <script>
+          function goBack() {
+            window.history.back();
+        }
+
+        function addFaq() {
+            const question = document.getElementById('user-question').value.trim();
+
+            if (question) {
+                const container = document.getElementById('user-faqs');
+
+                // Create a new tab element for the user input
+                const newTab = document.createElement('div');
+                newTab.classList.add('tab');
+
+                const uniqueId = 'user-acc-' + Date.now();
+
+                newTab.innerHTML = `
+                    <input type="radio" name="user-acc" id="${uniqueId}">
+                    <label for="${uniqueId}">
+                        <h2>Q</h2>
+                        <h3>${question}</h3>
+                    </label>
+                    <div class="content">
+                        <p>Thank you for your input. We will address your concern as soon as possible.</p>
+                    </div>
+                `;
+
+                // Append the new tab to the container
+                container.appendChild(newTab);
+
+                // Clear the input field
+                document.getElementById('user-question').value = '';
+            }
+        }
+    </script>
+</body>
+</html>

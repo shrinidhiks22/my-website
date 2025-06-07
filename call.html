@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #007BFF;
+            color: #333;
+            flex-direction: column;
+
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: url('C:\Users\Shrinidhi\Downloads\backbutton.jpg') no-repeat center;
+            background-size: cover;
+            cursor: pointer;
+        }
+        header {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        header img {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+        }
+        h1 {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        img.call-icon {
+            width: 40px; /* Adjust the size as needed */
+            height: 40px;
+            margin-right: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #2196F3;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-button" onclick="goBackAndExecuteFunction()">
+        <img src="C:/Users/Shrinidhi/Downloads/backbutton.jpg" width="50px" alt="Back">
+    </div>
+    
+    <script>
+        function goBackAndExecuteFunction() {
+            // Check if the parent window is available
+            if (window.opener) {
+                // Call the function in the parent window
+                window.opener.checkPNR();
+            }
+            // Close the FAQ page and return to the parent
+            window.close();
+        }
+    </script>
+
+    <div class="container">
+        <a href="tel:+139">
+            <h1><img class="call-icon" src="C:\Users\Shrinidhi\Downloads\calllogo.jpg" alt="Call">Railway: +139</h1>
+            <h1><img class="call-icon" src="C:\Users\Shrinidhi\Downloads\calllogo.jpg" alt="Call">Toll Number: +1800111321</h1>
+        </a>
+    </div>
+</body>
+</html>
